@@ -1,0 +1,2 @@
+joy_node:
+  dev:"/dev/input/js0"
