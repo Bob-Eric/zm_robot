@@ -1,0 +1,18 @@
+obstacle_range: 7.0
+raytrace_range: 7.5
+
+# footprint: [[-0.35, -0.4], [-0.35, 0.4], [0.34, 0.4], [0.34, -0.4]]
+robot_radius: 0.6
+
+inflation_radius: 0.7
+cost_scaling_factor: 3.0
+
+map_type: costmap
+observation_sources: optimised_scan 
+
+optimised_scan:
+  sensor_frame: map
+  data_type: PointCloud2
+  topic: /scan_matched_points2
+  marking: true
+  clearing: true
