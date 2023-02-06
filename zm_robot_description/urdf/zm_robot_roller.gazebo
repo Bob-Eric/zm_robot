@@ -5,8 +5,8 @@
 	<gazebo reference="${prefix}">
 	  <selfCollide>false</selfCollide>
     <gravity>true</gravity>
-    <mu1>30</mu1>
-    <mu2>30</mu2>
+    <mu1>300</mu1>
+    <mu2>300</mu2>
     <kp>1e50</kp>
     <kd>1e50</kd>
     <material>Gazebo/Black</material>

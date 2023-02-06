@@ -10,7 +10,7 @@
 	  <child link="${prefix}"/>
 	  <origin xyz="${origin_x} ${origin_y} 0" rpy="${rotation_x} 0 ${rotation_z}"/>
       <axis xyz="0 0 1"/>
-	  <dynamics damping="0.0" friction="0.0"/>
+	  <dynamics damping="0" friction="0"/>
 	</joint>
 
 	<link name="${prefix}">
