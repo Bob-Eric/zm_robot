@@ -4,7 +4,7 @@
 
   <!-- Constants for robot dimensions -->
   <xacro:property name="wheel_rotationx" value="-1.5708" />
-  <xacro:property name="agv_base_h" value="0.081572" /> <!-- agv_base height -->
+  <xacro:property name="agv_base_h" value="0.2" /> <!-- agv_base height -->
   <xacro:property name="wheel_before_L" value="0.25" /> <!-- wheel before L -->
   <xacro:property name="wheel_after_L" value="-0.25" /> <!-- wheel_after_L -->
   <xacro:property name="wheel_left_W" value="0.3" /> <!-- wheel left W -->

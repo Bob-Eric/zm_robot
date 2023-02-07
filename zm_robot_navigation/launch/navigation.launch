@@ -1,7 +1,7 @@
 <launch>
-    <include file="$(find zm_robot_navigation)/launch/cart_no_rviz.xml" />
-    <!-- <include file="$(find zm_robot_navigation)/launch/move_base.xml" /> -->
-    <!-- <include file="$(find zm_robot_navigation)/launch/zm_robot_move_base.launch" /> -->
-    <include file="$(find zm_robot_navigation)/launch/rviz.xml" />
-    <include file="$(find zm_robot_gazebo)/launch/zm_robot_willowgarage.launch" />
+    <!-- <include file="$(find zm_robot_gazebo)/launch/zm_robot_willowgarage.launch" /> -->
+    <!-- <include file="$(find zm_robot_rm)/launch/rm_world.launch" /> -->
+    <include file="$(find rmus_map_gazebo)/launch/gazebo_show.launch" />
+    <include file="$(find zm_robot_mapping)/launch/mapping.launch" />
+    <include file="$(find zm_robot_navigation)/launch/zm_robot_move_base.xml" />
 </launch>
