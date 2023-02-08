@@ -44,10 +44,11 @@ options = {
 }
 
 MAP_BUILDER.use_trajectory_builder_2d = true
-
-TRAJECTORY_BUILDER_2D.submaps.num_range_data = 35
-TRAJECTORY_BUILDER_2D.missing_data_ray_length = 1.
+POSE_GRAPH.optimize_every_n_nodes = 20 
+TRAJECTORY_BUILDER_2D.num_accumulated_range_data = 10
 TRAJECTORY_BUILDER_2D.use_imu_data = false
-TRAJECTORY_BUILDER_2D.use_online_correlative_scan_matching = true
 
+TRAJECTORY_BUILDER.pure_localization_trimmer = {
+  max_submaps_to_keep = 3, 
+}
 return options

@@ -17,18 +17,29 @@
 <launch>
   <param name="/use_sim_time" value="true" />
 
-  <node name="cartographer_node" pkg="cartographer_ros"
+  <!-- <node name="cartographer_node" pkg="cartographer_ros"
     type="cartographer_node"
     args="
           -configuration_directory $(find zm_robot_mapping)/configuration_files
           -configuration_basename cart.lua"
     output="screen">
     <remap from="scan" to="scan" />
-    <!-- <remap from="imu" to="imu" /> -->
+  </node> -->
+  <node name="cartographer_node" pkg="cartographer_ros"
+    type="cartographer_node"
+    args="
+          -configuration_directory $(find zm_robot_mapping)/configuration_files
+          -configuration_basename cart.lua
+          -load_state_filename $(find zm_robot_mapping)/map/hbut_lc.pbstream"
+    output="screen">
+    <remap from="scan" to="scan" />
   </node>
 
   <node name="cartographer_occupancy_grid_node" pkg="cartographer_ros"
-    type="cartographer_occupancy_grid_node" args="-resolution 0.05" />
+    type="cartographer_occupancy_grid_node" args="-resolution 0.05
+    -pure_localization 1" />
+  <node pkg="map_server" type="map_server" name="map_server" output="screen"
+    args="$(find zm_robot_mapping)/map/hbut_lc.yaml" />
 
   <node name="rviz" pkg="rviz" type="rviz" required="true"
     args="-d $(find zm_robot_mapping)/configuration_files/demo_2d.rviz" />
