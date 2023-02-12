@@ -1,9 +1,9 @@
 obstacle_range: 10
 raytrace_range: 10.5
 
-robot_radius: 0.7
+robot_radius: 0.6
 
-inflation_radius: 0.8
+inflation_radius: 0.6
 cost_scaling_factor: 3.0
 
 map_type: costmap
