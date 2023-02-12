@@ -1,46 +1,58 @@
-<!--
-  Copyright 2016 The Cartographer Authors
-
-  Licensed under the Apache License, Version 2.0 (the "License");
-  you may not use this file except in compliance with the License.
-  You may obtain a copy of the License at
-
-       http://www.apache.org/licenses/LICENSE-2.0
-
-  Unless required by applicable law or agreed to in writing, software
-  distributed under the License is distributed on an "AS IS" BASIS,
-  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  See the License for the specific language governing permissions and
-  limitations under the License.
--->
-
 <launch>
   <param name="/use_sim_time" value="true" />
+  <arg name="pure_localization" default="1" />
+  <arg name="localization_use_amcl" default="0" />
 
-  <!-- <node name="cartographer_node" pkg="cartographer_ros"
-    type="cartographer_node"
-    args="
+  <!-- Mapping -->
+  <group unless="$(arg pure_localization)">
+    <node name="cartographer_node" pkg="cartographer_ros"
+      type="cartographer_node"
+      args="
           -configuration_directory $(find zm_robot_mapping)/configuration_files
           -configuration_basename cart.lua"
-    output="screen">
-    <remap from="scan" to="scan" />
-  </node> -->
-  <node name="cartographer_node" pkg="cartographer_ros"
-    type="cartographer_node"
-    args="
-          -configuration_directory $(find zm_robot_mapping)/configuration_files
-          -configuration_basename cart.lua
-          -load_state_filename $(find zm_robot_mapping)/map/hbut_lc.pbstream"
-    output="screen">
-    <remap from="scan" to="scan" />
-  </node>
+      output="screen">
+      <remap from="scan" to="scan" />
+    </node>
+  </group>
 
-  <node name="cartographer_occupancy_grid_node" pkg="cartographer_ros"
-    type="cartographer_occupancy_grid_node" args="-resolution 0.05
-    -pure_localization 1" />
-  <node pkg="map_server" type="map_server" name="map_server" output="screen"
-    args="$(find zm_robot_mapping)/map/hbut_lc.yaml" />
+  <!-- Pure Localization -->
+  <group if="$(arg pure_localization)">
 
+    <!-- Cartographer -->
+    <group unless="$(arg localization_use_amcl)">
+      <node name="cartographer_node" pkg="cartographer_ros"
+        type="cartographer_node"
+        args="-configuration_directory $(find zm_robot_mapping)/configuration_files
+         -configuration_basename cart.lua 
+         -load_state_filename $(find zm_robot_mapping)/map/hbut_lc.pbstream"
+        output="screen">
+        <remap from="scan" to="scan" />
+      </node>
+      <param name="/localization" type="bool" value="1" />
+      <param name="/set_inital_pose_x" type="double" value="0" />
+      <param name="/set_inital_pose_y" type="double" value="0" />
+      <param name="/set_inital_pose_z" type="double" value="0.0" />
+      <param name="/set_inital_pose_ox" type="double" value="0.0" />
+      <param name="/set_inital_pose_oy" type="double" value="0.0" />
+      <param name="/set_inital_pose_oz" type="double" value="0" />
+      <param name="/set_inital_pose_ow" type="double" value="1" />
+    </group>
+
+    <!-- AMCL -->
+    <group if="$(arg localization_use_amcl)">
+      <include file="$(find zm_robot_mapping)/launch/amcl.xml" />
+    </group>
+
+    <node pkg="map_server" type="map_server" name="map_server" output="screen"
+      args="$(find zm_robot_mapping)/map/hbut_lc.yaml" />
+  </group>
+
+  <group unless="$(arg localization_use_amcl)">
+    <node name="cartographer_occupancy_grid_node" pkg="cartographer_ros"
+      type="cartographer_occupancy_grid_node"
+      args="-resolution 0.05
+    -pure_localization $(arg pure_localization)" />
+  </group>
   <node name="rviz" pkg="rviz" type="rviz" required="true"
     args="-d $(find zm_robot_mapping)/configuration_files/demo_2d.rviz" />
 </launch>

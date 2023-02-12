@@ -8,7 +8,11 @@
     <param name="base_local_planner" value="dwa_local_planner/DWAPlannerROS" />
     <rosparam file="$(find zm_robot_navigation)/param/costmap_common_params.yaml" command="load"
       ns="global_costmap" />
+    <rosparam file="$(find zm_robot_navigation)/param/global_inflation_radius.yaml" command="load"
+      ns="global_costmap" />
     <rosparam file="$(find zm_robot_navigation)/param/costmap_common_params.yaml" command="load"
+      ns="local_costmap" />
+    <rosparam file="$(find zm_robot_navigation)/param/local_inflation_radius.yaml" command="load"
       ns="local_costmap" />
     <rosparam file="$(find zm_robot_navigation)/param/local_costmap_params.yaml" command="load" />
     <rosparam file="$(find zm_robot_navigation)/param/global_costmap_params.yaml" command="load" />
