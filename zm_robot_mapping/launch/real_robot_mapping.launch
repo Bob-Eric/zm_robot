@@ -1,0 +1,9 @@
+<launch>
+    <param name="/use_sim_time" value="false" />
+    <include file="$(find rplidar_ros)/launch/rplidar.launch" />
+    <include file="$(find hero_description)/launch/hero_spawn.launch" />
+    <include file="$(find zm_robot_mapping)/launch/mapping.launch">
+        <arg name="pure_localization" value="0" />
+        <arg name="localization_use_amcl" value="0" />
+    </include>
+</launch>
