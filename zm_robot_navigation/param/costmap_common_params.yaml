@@ -7,8 +7,8 @@ robot_radius: 0.424264069
 cost_scaling_factor: 3.0
 
 map_type: costmap
-observation_sources: optimised_scan
-# observation_sources: scan
+# observation_sources: optimised_scan
+observation_sources: scan
 
 optimised_scan:
   sensor_frame: map

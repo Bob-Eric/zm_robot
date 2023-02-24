@@ -1,18 +1,20 @@
 <launch>
   <param name="/use_sim_time" value="true" />
   <arg name="pure_localization" default="1" />
-  <arg name="localization_use_amcl" default="0" />
+  <arg name="localization_use_amcl" default="1" />
 
   <!-- Mapping -->
-  <group unless="$(arg pure_localization)">
-    <node name="cartographer_node" pkg="cartographer_ros"
-      type="cartographer_node"
-      args="
+  <group unless="$(arg localization_use_amcl)">
+    <group unless="$(arg pure_localization)">
+      <node name="cartographer_node" pkg="cartographer_ros"
+        type="cartographer_node"
+        args="
           -configuration_directory $(find zm_robot_mapping)/configuration_files
           -configuration_basename cart.lua"
-      output="screen">
-      <remap from="scan" to="scan" />
-    </node>
+        output="screen">
+        <remap from="scan" to="scan" />
+      </node>
+    </group>
   </group>
 
   <!-- Pure Localization -->
