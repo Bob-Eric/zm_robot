@@ -54,6 +54,4 @@
       args="-resolution 0.05
     -pure_localization $(arg pure_localization)" />
   </group>
-  <node name="rviz" pkg="rviz" type="rviz" required="true"
-    args="-d $(find zm_robot_mapping)/configuration_files/demo_2d.rviz" />
 </launch>

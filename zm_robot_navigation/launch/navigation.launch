@@ -4,4 +4,5 @@
     <include file="$(find rmus_map_gazebo)/launch/gazebo_show.launch" />
     <include file="$(find zm_robot_mapping)/launch/mapping.launch" />
     <include file="$(find zm_robot_navigation)/launch/zm_robot_move_base.xml" />
+    <include file="$(find zm_robot_mapping)/launch/rviz.launch" />
 </launch>
