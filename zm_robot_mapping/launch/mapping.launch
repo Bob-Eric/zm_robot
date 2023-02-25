@@ -1,6 +1,6 @@
 <launch>
   <arg name="pure_localization" default="1" />
-  <arg name="localization_use_amcl" default="1" />
+  <arg name="localization_use_amcl" default="0" />
 
   <!-- Mapping -->
   <group unless="$(arg localization_use_amcl)">
