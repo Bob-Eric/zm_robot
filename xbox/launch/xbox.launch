@@ -1,0 +1,17 @@
+<launch>
+    <!-- assumes ds4drv is running -->
+    <rosparam file="$(find xbox)/param/device.yaml" command="load" />
+    <param name="axis_Lx" value="0" type="int" />
+    <param name="axis_Ly" value="1" type="int" />
+    <param name="axis_Rx" value="2" type="int" />
+    <param name="axis_Ry" value="3" type="int" />
+    <param name="axis_Lt" value="5" type="int" />
+    <param name="axis_Rt" value="4" type="int" />
+    <!-- <param name="max_v" value="800" type="double" />
+    <param name="max_w" value="12" type="double" /> -->
+    <!-- 启动手柄节点，respawn=" true"表示节点挂掉时会自动重启 -->
+
+    <node respawn="true" pkg="joy" type="joy_node" name="joystick" />
+    <node respawn="true" pkg="xbox" type="xbox_controller" name="xbox_controller" output="screen" />
+    <!-- <node respawn="true" pkg="xbox" type="serial_read_blueteeth" name="serial_read_blueteeth" /> -->
+</launch>
