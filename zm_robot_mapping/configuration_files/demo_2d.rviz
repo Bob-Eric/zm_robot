@@ -84,7 +84,7 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        laser_frame:
+        laser:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -328,7 +328,7 @@ Visualization Manager:
   Value: true
   Views:
     Current:
-      Angle: -3.1450037956237793
+      Angle: 0
       Class: rviz/TopDownOrtho
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
@@ -338,11 +338,11 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Scale: 50.498748779296875
+      Scale: 96.46293640136719
       Target Frame: <Fixed Frame>
       Value: TopDownOrtho (rviz)
-      X: -2.3125882148742676
-      Y: 13.11323070526123
+      X: -0.04146670550107956
+      Y: 0.995201051235199
     Saved: ~
 Window Geometry:
   Displays:
