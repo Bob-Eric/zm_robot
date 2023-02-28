@@ -1,7 +1,7 @@
 <launch>
   <!-- Arguments -->
   <arg name="cmd_vel_topic" default="/cmd_vel" />
-  <arg name="odom_topic" default="odom" />
+  <arg name="odom_topic" default="base_link" />
 
   <!-- move_base -->
   <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">

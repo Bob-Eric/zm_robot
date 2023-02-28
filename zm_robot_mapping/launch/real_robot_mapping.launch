@@ -6,4 +6,5 @@
         <arg name="pure_localization" value="0" />
         <arg name="localization_use_amcl" value="0" />
     </include>
+    <node pkg="zm_robot_com" type="cmd_com" name="cmd_com" output="screen"/>
 </launch>

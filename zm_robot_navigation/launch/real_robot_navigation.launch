@@ -1,0 +1,4 @@
+<launch>
+    <include file="$(find zm_robot_mapping)/launch/real_robot_mapping.launch"/>
+    <include file="$(find zm_robot_navigation)/launch/zm_robot_move_base.xml" />
+</launch>

@@ -19,7 +19,7 @@ public:
 
 cmdCom::cmdCom(ros::NodeHandle& nh):nh_(nh) {
     ROS_INFO("cmd_com started");
-    nh_.param<std::string>("port", port, "/dev/ttyUSB0");
+    nh_.param<std::string>("port", port, "/dev/ch340");
     nh_.param<int>("baudrate", baudrate, 115200);
     while (ros::ok() && !ser_.isOpen()) {
         try { // 设置串口属性，并打开串口 
@@ -55,7 +55,7 @@ void cmdCom::cmdCallback(const geometry_msgs::TwistConstPtr& msg) {
     int y = int(msg->linear.y * 100);
     double z = msg->angular.z;
 
-    snprintf(data, sizeof(data), "vel|0|% .3d|% .3d|% .2f|", x, y, z);
+    snprintf(data, sizeof(data), "vel|0|% .3d|% .3d|% .2f|", y, -x, z);
     ser_.write(data);
     ROS_INFO_STREAM(data);
 }
