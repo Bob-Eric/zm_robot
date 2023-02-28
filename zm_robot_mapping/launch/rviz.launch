@@ -1,4 +1,5 @@
 <launch>
+    <param name="/use_sim_time" value="false" />
     <node name="rviz" pkg="rviz" type="rviz" required="true"
         args="-d $(find zm_robot_mapping)/configuration_files/demo_2d.rviz" />
 </launch>
